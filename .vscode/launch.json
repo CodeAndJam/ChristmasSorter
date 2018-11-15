@@ -1,0 +1,8 @@
+{
+    "type": "node",
+    "request": "launch",
+    "name": "Current File",
+    "program": "${file}",
+    "console": "integratedTerminal",
+    "outFiles": ["${fileDirname}/*.js"]
+  }

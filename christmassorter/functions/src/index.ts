@@ -1,10 +1,13 @@
 import * as functions from 'firebase-functions';
 import sgMail = require('@sendgrid/mail');
-import nodemailer = require('nodemailer');
+import SorterEvent from "../../Shared/Interfaces/SorterEvent.interface";
+import { sortEventMembers } from './business/Sorter';
+import { sendEmailer } from '../src/business/Email';
+
+// import SorterEvent = require('../../Shared/Interfaces/SorterEvent.Interface');
 
 const SENDGRID_API_KEY = functions.config().sendgrid.key
 const GMAIL_PWD = functions.config().gmail.pwd
-
 
 export const sendEmails = functions.https.onRequest((request, response) => {
     
@@ -24,36 +27,19 @@ export const sendEmails = functions.https.onRequest((request, response) => {
                     .catch(err => console.log(err));
    });
 
+   
 
 
    export const sendGmailEmails = functions.https.onRequest((request, response) => {
 
-    const email = request.query.email;
-    const emails = request.body.emails;
+     const event: SorterEvent = request.body;
 
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-               user: 'christmassorter@gmail.com',
-               pass: GMAIL_PWD
-           }
-       });
+    const emailList = sortEventMembers(event.members);
 
-       const mailOptions = {
-        from: 'christmassorter@gmail.com', // sender address
-        to: emails, // list of receivers
-        subject: 'Subject of your email', // Subject line
-        html: '<p>Your html here</p>'// plain text body
-      };
-
-      transporter.sendMail(mailOptions, function (err, info) {
-        if(err)
-          console.log(err)
-        else
-          console.log(info);
-     });
+    for (const e of emailList) {
+      sendEmailer(GMAIL_PWD,event.name, event.date, event.templateBody, e);
+    }
    });
-
-
+   
 
 
