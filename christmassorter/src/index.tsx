@@ -9,10 +9,10 @@ import * as serviceWorker from './serviceWorker';
 
 
 const renderApp = () => (
-    <FormProvider rules={rules} messages={messages}>
-      <App />
-    </FormProvider>
-  );
+  <FormProvider rules={rules} messages={messages}>
+    <App />
+  </FormProvider>
+);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

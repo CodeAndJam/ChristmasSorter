@@ -9,7 +9,7 @@ export default {
       minLength: ({ value }) => (value.length > 5)
     }
   },
-  
+
   name: {
     confirmPassword: {
       matches: ({ value, get }) => {
