@@ -26,7 +26,7 @@ export default {
       },
       userEmail: {
         async: ({ value, errorCode }) => {
-          return`E-mail "${email}" is already registered. Error code: ${errorCode}.`;
+          return`E-mail "${value}" is already registered. Error code: ${errorCode}.`;
         }
       }
     }
