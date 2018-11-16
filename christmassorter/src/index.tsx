@@ -1,8 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { FormProvider } from 'react-advanced-form';
+import rules from './Components/validation-rules';
+import messages from './Components/validation-messages';
+import './css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+
+const renderApp = () => (
+    <FormProvider rules={rules} messages={messages}>
+      <App />
+    </FormProvider>
+  );
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
