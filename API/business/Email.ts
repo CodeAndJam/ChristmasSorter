@@ -1,8 +1,10 @@
 import { EmailList } from "./EmailList.interface";
 const nodemailer = require('nodemailer');
 
+export default class Emailer {
 
-   exports.sendEmailer = function (pwd: String, subject:String, date: Date, body: String, recipient: EmailList) {
+
+   sendEmailer (pwd: String, subject:String, date: Date, body: String, recipient: EmailList) {
         
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -35,3 +37,4 @@ const nodemailer = require('nodemailer');
     }
     
 
+}

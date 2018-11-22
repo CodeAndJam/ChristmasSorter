@@ -1,10 +1,13 @@
 const express = require('express')
 // import sgMail = require('@sendgrid/mail');
-import Sorter = require('./business/Sorter');
-import  Emailer =  require('./business/Email');
+import Sorter from'./business/Sorter';
+import Emailer from './business/Email';
+
 import { SorterEvent } from './Shared/Interfaces/SorterEvent.Interface';
 import * as bodyParser from "body-parser";
 
+const sort = new Sorter();
+const email = new Emailer();
 
 const app = express()
 const port = 3000
@@ -27,10 +30,10 @@ app.post('/sendEmail', jsonParser, function (req, res) {
     
     const event: SorterEvent = req.body;
       
-    const emailList = Sorter.sortEventMembers(event.members);
+    const emailList = sort.sortEventMembers(event.members);
 
     for (const e of emailList) {
-      Emailer.sendEmailer(GMAIL_PWD,event.name, event.date, event.templateBody, e);
+      email.sendEmailer(GMAIL_PWD,event.name, event.date, event.templateBody, e);
     }
 
     res.send('All participants were notified of their secret! ')

@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "lib": ["es6"],
-    "module": "commonjs",
+    "lib": ["es2017"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "noImplicitReturns": true,
     "outDir": "lib",
     "sourceMap": true,

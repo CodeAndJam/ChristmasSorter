@@ -2,8 +2,8 @@
 exports.__esModule = true;
 var express = require('express');
 // import sgMail = require('@sendgrid/mail');
-var Sorter = require("./business/Sorter");
-var Emailer = require("./business/Email");
+var Sorter_1 = require("./business/Sorter");
+var Email_1 = require("./business/Email");
 var bodyParser = require("body-parser");
 var app = express();
 var port = 3000;
@@ -16,10 +16,10 @@ var jsonParser = bodyParser.json();
 app.get('/', function (req, res) { return res.send('Hello World!'); });
 app.post('/sendEmail', jsonParser, function (req, res) {
     var event = req.body;
-    var emailList = Sorter.sortEventMembers(event.members);
+    var emailList = Sorter_1["default"].sortEventMembers(event.members);
     for (var _i = 0, emailList_1 = emailList; _i < emailList_1.length; _i++) {
         var e = emailList_1[_i];
-        Emailer.sendEmailer(GMAIL_PWD, event.name, event.date, event.templateBody, e);
+        Email_1["default"].sendEmailer(GMAIL_PWD, event.name, event.date, event.templateBody, e);
     }
     res.send('All participants were notified of their secret! ');
 });

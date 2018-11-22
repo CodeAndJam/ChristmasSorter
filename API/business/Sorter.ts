@@ -26,22 +26,27 @@ function shuffle(array) {
   return array;
 }
 
-exports.sortEventMembers = function (members: Array<Member>) : Array<EmailList> {
+ export default class Sorter {
 
-
-  const arr: Array<Member> = shuffle(members);
-
-  const sendingList: Array<EmailList> = [];
-
-for(let i = 0; i < arr.length;  i ++){
-
-    const from = arr[i] ;
+  sortEventMembers (members: Array<Member>) : Array<EmailList> {
     
-    const to = i === arr.length - 1 ? arr[0] : arr[i+1] ;
-    const email: EmailList = {from, to};
-    sendingList.push(email);
+    
+    const arr: Array<Member> = shuffle(members);
+    
+    const sendingList: Array<EmailList> = [];
+    
+    for(let i = 0; i < arr.length;  i ++){
+      
+      const from = arr[i] ;
+      
+      const to = i === arr.length - 1 ? arr[0] : arr[i+1] ;
+      const email: EmailList = {from, to};
+      sendingList.push(email);
+      
+    }
+    
+    return sendingList;
+  }
+  
+} 
 
-}
-
-  return sendingList;
-}

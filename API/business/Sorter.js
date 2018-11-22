@@ -18,14 +18,20 @@ function shuffle(array) {
     }
     return array;
 }
-exports.sortEventMembers = function (members) {
-    var arr = shuffle(members);
-    var sendingList = [];
-    for (var i = 0; i < arr.length; i++) {
-        var from = arr[i];
-        var to = i === arr.length - 1 ? arr[0] : arr[i + 1];
-        var email = { from: from, to: to };
-        sendingList.push(email);
+var Sorter = /** @class */ (function () {
+    function Sorter() {
     }
-    return sendingList;
-};
+    Sorter.sortEventMembers = function (members) {
+        var arr = shuffle(members);
+        var sendingList = [];
+        for (var i = 0; i < arr.length; i++) {
+            var from = arr[i];
+            var to = i === arr.length - 1 ? arr[0] : arr[i + 1];
+            var email = { from: from, to: to };
+            sendingList.push(email);
+        }
+        return sendingList;
+    };
+    return Sorter;
+}());
+exports["default"] = Sorter;
