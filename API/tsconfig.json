@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["es2017"],
+    "lib": ["es2015", "es5", "es6", "dom"],
     "module": "CommonJS",
     "moduleResolution": "node",
     "noImplicitReturns": true,

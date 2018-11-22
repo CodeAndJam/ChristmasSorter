@@ -21,7 +21,7 @@ function shuffle(array) {
 var Sorter = /** @class */ (function () {
     function Sorter() {
     }
-    Sorter.sortEventMembers = function (members) {
+    Sorter.prototype.sortEventMembers = function (members) {
         var arr = shuffle(members);
         var sendingList = [];
         for (var i = 0; i < arr.length; i++) {

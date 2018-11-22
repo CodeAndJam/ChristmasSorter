@@ -4,7 +4,7 @@ var nodemailer = require('nodemailer');
 var Emailer = /** @class */ (function () {
     function Emailer() {
     }
-    Emailer.sendEmailer = function (pwd, subject, date, body, recipient) {
+    Emailer.prototype.sendEmailer = function (pwd, subject, date, body, recipient) {
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
