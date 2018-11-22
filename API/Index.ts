@@ -13,11 +13,9 @@ const email = new Emailer();
 dotenv.load();
 
 const app = express()
-const port = 3000
-
-// const SENDGRID_API_KEY = functions.config().sendgrid.key
+const port = process.env.PORT
 const GMAIL_PWD = process.env.GMAIL_PWD
-console.log(process.env.GMAIL_PWD);
+
 
 
 // create application/json parser
