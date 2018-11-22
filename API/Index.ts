@@ -2,6 +2,7 @@ const express = require('express')
 // import sgMail = require('@sendgrid/mail');
 import Sorter from'./business/Sorter';
 import Emailer from './business/Email';
+import dotenv = require('dotenv');
 
 import { SorterEvent } from './Shared/Interfaces/SorterEvent.Interface';
 import * as bodyParser from "body-parser";
@@ -9,11 +10,14 @@ import * as bodyParser from "body-parser";
 const sort = new Sorter();
 const email = new Emailer();
 
+dotenv.load();
+
 const app = express()
 const port = 3000
 
 // const SENDGRID_API_KEY = functions.config().sendgrid.key
 const GMAIL_PWD = process.env.GMAIL_PWD
+console.log(process.env.GMAIL_PWD);
 
 
 // create application/json parser

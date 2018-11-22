@@ -4,9 +4,18 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "noImplicitReturns": true,
-    "outDir": "lib",
+    "outDir": "./bin",
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
     "sourceMap": true,
     "target": "es6"
   },
-  "compileOnSave": true
+  "compileOnSave": true,
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "./**/*.ts"
+  ],
 }

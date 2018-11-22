@@ -28,3 +28,4 @@ yarn-error.log*
 
 *.js.map
 *lock.json
+*/.env
