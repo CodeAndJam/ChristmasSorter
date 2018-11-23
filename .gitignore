@@ -3,6 +3,7 @@
 # dependencies
 /API/node_modules/
 /christmassorter/node_modules/
+/node_modules/
 /lib/
 
 
