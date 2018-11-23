@@ -15,7 +15,9 @@ var GMAIL_PWD = process.env.GMAIL_PWD;
 var jsonParser = bodyParser.json();
 // create application/x-www-form-urlencoded parser
 // var urlencodedParser = bodyParser.urlencoded({ extended: false })
-app.get('/', function (req, res) { return res.send('Hello World!'); });
+
+app.use(express.static(path.resolve(__dirname, '../React-Ui/build')));
+
 app.post('/sendEmail', jsonParser, function (req, res) {
     var event = req.body;
     var emailList = sort.sortEventMembers(event.members);
@@ -25,4 +27,12 @@ app.post('/sendEmail', jsonParser, function (req, res) {
     }
     res.send('All participants were notified of their secret! ');
 });
-app.listen(port, function () { return console.log("Example app listening on port " + port + "!"); });
+ 
+// All remaining requests return the React app, so it can handle routing.
+ app.get('*', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../React-UI/build', 'index.html'));
+  });
+
+app.listen(port, function () { 
+    return console.log("Example app listening on port " + port + "!"); 
+});
