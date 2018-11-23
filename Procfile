@@ -1,2 +1,2 @@
-web: node .\API\Index.js
-api: node .\christmassorter\app.js
+api: node .\API\Index.js
+web: node .\christmassorter\app.js
