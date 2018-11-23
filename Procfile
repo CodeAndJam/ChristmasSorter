@@ -1,1 +1,1 @@
-web: node .\API\Index.js
+api: node API/index.js
