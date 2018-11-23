@@ -8,7 +8,7 @@ var bodyParser = require("body-parser");
 var sort = new Sorter_1["default"]();
 var email = new Email_1["default"]();
 var app = express();
-var port = 3000;
+const port = process.env.PORT || '3000';
 // const SENDGRID_API_KEY = functions.config().sendgrid.key
 var GMAIL_PWD = process.env.GMAIL_PWD;
 // create application/json parser
