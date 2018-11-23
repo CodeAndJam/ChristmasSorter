@@ -16,7 +16,7 @@ var jsonParser = bodyParser.json();
 // create application/x-www-form-urlencoded parser
 // var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-app.use(express.static(path.resolve(__dirname, '../React-Ui/build')));
+app.use(express.static(path.resolve(__dirname, '../React-UI/build')));
 
 app.post('/sendEmail', jsonParser, function (req, res) {
     var event = req.body;
