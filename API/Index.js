@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var express = require('express');
+const path = require('path');
 // import sgMail = require('@sendgrid/mail');
 var Sorter_1 = require("./business/Sorter");
 var Email_1 = require("./business/Email");
