@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.16.4",
+    "nodemailer": "^4.7.0",
     "react": "^16.6.3",
     "react-advanced-form": "^1.5.9"
   },
