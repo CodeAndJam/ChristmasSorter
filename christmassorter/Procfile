@@ -1,1 +1,1 @@
-web: node .\christmassorter\app.js
+web: node app.js
