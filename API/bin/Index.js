@@ -20,10 +20,8 @@ const sort = new Sorter_1.default();
 const email = new Email_1.default();
 dotenv.load();
 const app = express();
-const port = 3000;
-// const SENDGRID_API_KEY = functions.config().sendgrid.key
+const port = process.env.PORT;
 const GMAIL_PWD = process.env.GMAIL_PWD;
-console.log(process.env.GMAIL_PWD);
 // create application/json parser
 const jsonParser = bodyParser.json();
 // create application/x-www-form-urlencoded parser
@@ -33,9 +31,9 @@ app.post('/sendEmail', jsonParser, function (req, res) {
     const event = req.body;
     const emailList = sort.sortEventMembers(event.members);
     for (const e of emailList) {
-        email.sendEmailer(GMAIL_PWD, event.name, event.date, event.templateBody, e);
+        email.sendEmailer(GMAIL_PWD, event, e);
     }
     res.send('All participants were notified of their secret! ');
 });
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`App listening on  localhost:${port}!`));
 //# sourceMappingURL=Index.js.map

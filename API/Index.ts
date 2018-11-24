@@ -35,11 +35,11 @@ app.post('/sendEmail', jsonParser, function (req, res) {
     const emailList = sort.sortEventMembers(event.members);
 
     for (const e of emailList) {
-      email.sendEmailer(GMAIL_PWD,event.name, event.date, event.templateBody, e);
+      email.sendEmailer(GMAIL_PWD,event, e);
     }
 
     res.send('All participants were notified of their secret! ')
   })
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`App listening on  localhost:${port}!`))

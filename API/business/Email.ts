@@ -1,10 +1,12 @@
 import { EmailList } from "./EmailList.interface";
-const nodemailer = require('nodemailer');
+import { SorterEvent } from "../Shared/Interfaces/SorterEvent.Interface";
+import nodemailer from 'nodemailer';
+const pug = require('pug');
 
 export default class Emailer {
 
 
-   sendEmailer (pwd: String, subject:String, date: Date, body: String, recipient: EmailList) {
+   sendEmailer (pwd: String, event: SorterEvent, recipient: EmailList) {
         
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -13,21 +15,24 @@ export default class Emailer {
                 pass: pwd
             }
         });
+        const currency = event.currency ? event.currency : "€"
         
+
         const mailOptions: any = {
             from: "christmassorter@gmail.com", // sender address
             to: recipient.from.email, // list of receivers
-            subject: subject, // Subject line
-            html: `Hi there ${recipient.from.name}! 
-            You were invited to a Gift Exchange at ${date} named ${subject}. The limit is 5â‚¬ and you are to give a gift to ${recipient.to.name}
-            
-            Best regards and happy gift Exchange!!!
-            `// plain text body
+            subject: event.name, // Subject line
+            html: pug.renderFile('./business/mail.pug', {
+                recipientFromName: recipient.from. name,
+                date: event.date,
+                price: event.giftPrice,
+                name: event.name,
+                currency: currency,
+                recipientToName: recipient.to.name
+              })
         };
-
-        console.log(mailOptions);
         
-        
+        // console.log(mailOptions.html);
         transporter.sendMail(mailOptions, function (err, info) {
             if(err)
             console.log(err)

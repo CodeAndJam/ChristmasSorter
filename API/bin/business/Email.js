@@ -1,26 +1,34 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const nodemailer = require('nodemailer');
+const nodemailer_1 = __importDefault(require("nodemailer"));
+const pug = require('pug');
 class Emailer {
-    sendEmailer(pwd, subject, date, body, recipient) {
-        const transporter = nodemailer.createTransport({
+    sendEmailer(pwd, event, recipient) {
+        const transporter = nodemailer_1.default.createTransport({
             service: 'gmail',
             auth: {
                 user: 'christmassorter@gmail.com',
                 pass: pwd
             }
         });
+        const currency = event.currency ? event.currency : "�";
         const mailOptions = {
             from: "christmassorter@gmail.com",
             to: recipient.from.email,
-            subject: subject,
-            html: `Hi there ${recipient.from.name}! 
-            You were invited to a Gift Exchange at ${date} named ${subject}. The limit is 5€ and you are to give a gift to ${recipient.to.name}
-            
-            Best regards and happy gift Exchange!!!
-            ` // plain text body
+            subject: event.name,
+            html: pug.renderFile('./business/mail.pug', {
+                recipientFromName: recipient.from.name,
+                date: event.date,
+                price: event.giftPrice,
+                name: event.name,
+                currency: currency,
+                recipientToName: recipient.to.name
+            })
         };
-        console.log(mailOptions);
+        // console.log(mailOptions.html);
         transporter.sendMail(mailOptions, function (err, info) {
             if (err)
                 console.log(err);

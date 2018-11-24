@@ -1,8 +1,9 @@
 import Member from "./Member.interface";
 
 export  interface SorterEvent {
-    name: String;
-    templateBody: String;
+    name: string;
+    giftPrice: number;
+    currency?: string;
     members: Array<Member>;
     date: Date;
 }
