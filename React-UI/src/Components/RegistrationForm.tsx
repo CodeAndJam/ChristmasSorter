@@ -1,30 +1,24 @@
 import React from 'react';
 import { Form, Field } from 'react-advanced-form';
-import Input from './Input'
+import Input from './Input';
 
-export default class RegistrationForm extends React.Component {
+export default class RegistrationForm extends React.Component<any> {  
   validateEmail = ({ value, fieldProps, fields, form }: { value: any, fieldProps: any, fields: any, form: any }) => {
-    return fetch('https://backend/', { body: value })
-      .then(res => res.json())
-      .then((res) => {
-        return {
-          /* Determine if the e-mail is valid based on response */
-          valid: (res.statusCode === 'SUCCESS'),
-          errorCode: res.errorCode
-        };
-      });
-  }
-
-  registerUser = ({ serialized, fields, form }: { serialized: any, fields: any, form: any }) => {
-    return fetch('https://backend.dev/user', {
-      method: 'POST',
-      body: JSON.stringify(serialized)
-    });
+    return true;
+    // fetch('https://backend/', { body: value })
+    //   .then(res => res.json())
+    //   .then((res) => {
+    //     return {
+    //       /* Determine if the e-mail is valid based on response */
+    //       valid: (res.statusCode === 'SUCCESS'),
+    //       errorCode: res.errorCode
+    //     };
+    //   });
   }
 
   render() {
     return (
-      <Form action={this.registerUser}>
+      <Form action={this.props.action}>
         <fieldset
           className="form-group">
           <label>
