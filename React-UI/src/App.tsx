@@ -7,6 +7,9 @@ export default class App extends React.Component {
   registerUser = ({ serialized, fields, form }: { serialized: any, fields: any, form: any }) => {
     return fetch('https://christmassorter.herokuapp.com/sendEmail', {
       method: 'POST',
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
       body: JSON.stringify(
         {
           "name": "Test Event",
