@@ -22,12 +22,12 @@
     "file-system": "^2.2.2",
     "fs": "0.0.1-security",
     "nodemailer": "^4.6.8",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "typescript": "~3.2.1"
   },
   "devDependencies": {
     "@types/nodemailer": "^4.6.5",
     "@types/pug": "^2.0.4",
-    "tslint": "~5.11.0",
-    "typescript": "~3.2.1"
+    "tslint": "~5.11.0"
   }
 }
