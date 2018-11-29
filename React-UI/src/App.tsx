@@ -5,11 +5,11 @@ import RegistrationForm from './Components/RegistrationForm';
 
 
 const url = "https://christmassorter.herokuapp.com/";
-// const url = "https://localhost:3000";
+//const url = "http://localhost:3000";
 
 export default class App extends React.Component {
   registerUser = ({ serialized, fields, form }: { serialized: any, fields: any, form: any }) => {
-    return fetch(`${url}/sendEmail`, {
+    return fetch(`/sendEmail`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json; charset=utf-8",

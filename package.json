@@ -12,7 +12,7 @@
   "devDependencies": {},
   "scripts": {
     "dev": "npm run build-front && npm run build-api && node ./API/Index.js",
-    "build-api": "cd API && npm i &&  npm run build && cd ..",
+    "build-api": "cd API && npm i && cd ..",
     "build-front": "npm run heroku-postbuild",
     "start": "npm i &&  npm run build && node ./API/Index.js",
     "heroku-postbuild": "cd React-UI && npm install && npm install --only=dev --no-shrinkwrap && npm run build cd .."
