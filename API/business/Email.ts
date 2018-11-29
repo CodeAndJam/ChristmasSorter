@@ -22,7 +22,15 @@ export default class Emailer {
             from: "christmassorter@gmail.com", // sender address
             to: recipient.from.email, // list of receivers
             subject: event.name, // Subject line
-            html: pug.renderFile('./API/business/mail.pug', {
+            html: pug.render(`body(style={background: 'red', 'padding': '10px'})
+            div.container(style={background: 'white', 'padding': '10px'})
+                h1(style={"text-align": 'center'}) Gift Exchange
+
+                p Hi there #{recipientFromName}!
+
+                p You were invited to a Gift Exchange at #{date} named #{name}. The limit of the gift is #{price}#{currency}, and you are to give a gift to #{recipientToName}.
+
+                p Best regards and happy gift Exchange!!!`, {
                 recipientFromName: recipient.from. name,
                 date: event.date,
                 price: event.giftPrice,

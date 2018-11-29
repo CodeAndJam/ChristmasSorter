@@ -25,7 +25,7 @@ var Emailer = /** @class */ (function () {
             from: "christmassorter@gmail.com",
             to: recipient.from.email,
             subject: event.name,
-            html: pug.renderFile('./API/business/mail.pug', {
+            html: pug.render("body(style={background: 'red', 'padding': '10px'})\n            div.container(style={background: 'white', 'padding': '10px'})\n                h1(style={\"text-align\": 'center'}) Gift Exchange\n\n                p Hi there #{recipientFromName}!\n\n                p You were invited to a Gift Exchange at #{date} named #{name}. The limit of the gift is #{price}#{currency}, and you are to give a gift to #{recipientToName}.\n\n                p Best regards and happy gift Exchange!!!", {
                 recipientFromName: recipient.from.name,
                 date: event.date,
                 price: event.giftPrice,
