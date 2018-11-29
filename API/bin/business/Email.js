@@ -25,7 +25,7 @@ var Emailer = /** @class */ (function () {
             from: "christmassorter@gmail.com",
             to: recipient.from.email,
             subject: event.name,
-            html: pug.renderFile('./business/mail.pug', {
+            html: pug.renderFile('./API/business/mail.pug', {
                 recipientFromName: recipient.from.name,
                 date: event.date,
                 price: event.giftPrice,

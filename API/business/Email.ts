@@ -22,7 +22,7 @@ export default class Emailer {
             from: "christmassorter@gmail.com", // sender address
             to: recipient.from.email, // list of receivers
             subject: event.name, // Subject line
-            html: pug.renderFile('./business/mail.pug', {
+            html: pug.renderFile('./API/business/mail.pug', {
                 recipientFromName: recipient.from. name,
                 date: event.date,
                 price: event.giftPrice,
