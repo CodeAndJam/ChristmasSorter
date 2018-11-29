@@ -22,7 +22,11 @@ export default class App extends React.Component {
           "giftPrice": fields.price.value,
           "currency": fields.currency.value
         })
-    });
+    }).then(() => alert(" Sent with success"))
+      .catch((e) => alert("Error"));
+
+
+
   }
 
   render() {

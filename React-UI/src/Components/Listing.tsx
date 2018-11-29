@@ -14,7 +14,7 @@ export default class Listing extends React.Component<any, any> {
             email: '',
             members: []
         }
-    }   
+    }
 
     addItem = (evt: React.MouseEvent<HTMLInputElement>) => {
         evt.preventDefault();
@@ -22,6 +22,8 @@ export default class Listing extends React.Component<any, any> {
         const email = this.state.email;
 
         this.setState((prevState:MyState) => ({
+            name: '',
+            email: '',
             members: [...prevState.members, {name:text, email:email}],
           }));
     };
@@ -37,7 +39,7 @@ export default class Listing extends React.Component<any, any> {
     render() {
         const { fieldProps } = this.props;
 
-        return (          
+        return (
             <div>
                 <Input {...fieldProps} name="participants" value={JSON.stringify(this.state.members)} type="hidden"></Input>
                 <div className="wrapper">
