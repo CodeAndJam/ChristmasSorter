@@ -1,13 +1,13 @@
 import { EmailList } from "./EmailList.interface";
 import { SorterEvent } from "../Shared/Interfaces/SorterEvent.Interface";
 import nodemailer from 'nodemailer';
-const pug = require('pug');
+import pug from 'pug';
 
 export default class Emailer {
 
 
    sendEmailer (pwd: String, event: SorterEvent, recipient: EmailList) {
-        
+
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -16,7 +16,7 @@ export default class Emailer {
             }
         });
         const currency = event.currency ? event.currency : "€"
-        
+
 
         const mailOptions: any = {
             from: "christmassorter@gmail.com", // sender address
@@ -31,8 +31,7 @@ export default class Emailer {
                 recipientToName: recipient.to.name
               })
         };
-        
-        // console.log(mailOptions.html);
+
         transporter.sendMail(mailOptions, function (err, info) {
             if(err)
             console.log(err)
@@ -40,6 +39,6 @@ export default class Emailer {
             console.log(info);
         });
     }
-    
+
 
 }

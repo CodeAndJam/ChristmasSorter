@@ -1,19 +1,18 @@
 {
-    "version": "0.1.0",
+    "version": "2.0.0",
     "command": "node",
-    "isShellCommand": true,
     "args": [
         "--harmony"
     ],
-
     "tasks": [
         {
-            "taskName": "runFile",
-            "isTestCommand": true,
-            "suppressTaskName": true,
-            "showOutput": "always",
-            "problemMatcher": "$jshint",
-            "args": ["${file}"]
+            "label": "typescript",
+            "type": "typescript",
+            "tsconfig": "tsconfig.json",
+            "problemMatcher": [
+                "$tsc"
+            ]
         }
+
     ]
 }

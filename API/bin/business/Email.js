@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const nodemailer_1 = __importDefault(require("nodemailer"));
-const pug = require('pug');
+const pug_1 = __importDefault(require("pug"));
 class Emailer {
     sendEmailer(pwd, event, recipient) {
         const transporter = nodemailer_1.default.createTransport({
@@ -19,7 +19,7 @@ class Emailer {
             from: "christmassorter@gmail.com",
             to: recipient.from.email,
             subject: event.name,
-            html: pug.renderFile('./business/mail.pug', {
+            html: pug_1.default.renderFile('./business/mail.pug', {
                 recipientFromName: recipient.from.name,
                 date: event.date,
                 price: event.giftPrice,
@@ -28,7 +28,6 @@ class Emailer {
                 recipientToName: recipient.to.name
             })
         };
-        // console.log(mailOptions.html);
         transporter.sendMail(mailOptions, function (err, info) {
             if (err)
                 console.log(err);
