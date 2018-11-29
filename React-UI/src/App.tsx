@@ -12,19 +12,11 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(
         {
-          "name": "Test Event",
-          "members": [
-            {
-              "name": "José cabeda",
-              "email": "jecabeda@gmail.com"
-            },
-            {
-              "name": "Luís Lopes",
-              "email": "ll61295@gmail.com"
-            }
-          ],
-          "date": "2018-12-12",
-          "templateBody": "Template body to receive"
+          "name": fields.eventName,
+          "members": fields.participants,
+          "date": fields.eventDate,
+          "giftPrice": fields.price,
+          "currency": fields.currency
         })
     });
   }

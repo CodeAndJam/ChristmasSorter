@@ -1,4 +1,4 @@
-export default class Member {
+export default interface Member {
     name: String;
     email: String;
 }

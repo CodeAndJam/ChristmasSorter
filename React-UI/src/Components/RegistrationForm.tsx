@@ -1,85 +1,62 @@
 import React from 'react';
 import { Form, Field } from 'react-advanced-form';
 import Input from './Input';
+import Listing from './Listing';
 
-export default class RegistrationForm extends React.Component<any> {  
-  validateEmail = ({ value, fieldProps, fields, form }: { value: any, fieldProps: any, fields: any, form: any }) => {
-    return true;
-    // fetch('https://backend/', { body: value })
-    //   .then(res => res.json())
-    //   .then((res) => {
-    //     return {
-    //       /* Determine if the e-mail is valid based on response */
-    //       valid: (res.statusCode === 'SUCCESS'),
-    //       errorCode: res.errorCode
-    //     };
-    //   });
-  }
-
+export default class RegistrationForm extends React.Component<any> {
   render() {
     return (
       <Form action={this.props.action}>
         <fieldset
           className="form-group">
           <label>
-            Email:
+            Event Name:
         </label>
           <Input
-            name="userEmail"
-            type="email"
-            required />
-        </fieldset>
-
-        <fieldset
-          className="form-group">
-          <label>
-            Password:
-        </label>
-          <Input
-            name="userPassword"
-            type="password"
-            required />
-        </fieldset>
-
-        <fieldset
-          className="form-group">
-          <label>
-            Confirm Password:
-        </label>
-          <Input
-            name="confirmPassword"
-            type="password"
+            name="eventName"
             required
-            skip />
+          />
         </fieldset>
-
         <fieldset
           className="form-group">
           <label>
-            First Name:
+            Event Date:
         </label>
           <Input
-            name="firstName"
-            required={({ get }: { get: any }) => {
-              // resolves any time "value" prop of "lastName" changes
-              return !!get(['lastName', 'value']);
-            }} />
+            name="eventDate"
+            type="date"
+            required
+          />
         </fieldset>
-
+        <fieldset className="form-group">
+          <label>
+            Max Price:
+        </label>
+          <Input
+            name="price"
+            type="number"
+            placeholder="Keep it low for your poor friend..."
+            required
+          />
+        </fieldset>
         <fieldset
           className="form-group">
           <label>
-            Last Name:
+            Currency:
         </label>
           <Input
-            name="lastName"
-            required={({ get }: { get: any }) => {
-              // resolves any time "value" prop of "firstName" changes
-              return !!get(['firstName', 'value']);
-            }} />
+            name="currency"
+            required
+          />
         </fieldset>
-        
-        <button>Register</button>
+        <fieldset
+          className="form-group">
+          <label>
+            Participants:
+        </label>
+          <Listing />
+        </fieldset>
+        <button>Shuffle it!!!</button>
       </Form>
     );
   }
