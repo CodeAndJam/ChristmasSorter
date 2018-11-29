@@ -1,7 +1,7 @@
 import { EmailList } from "./EmailList.interface";
 import { SorterEvent } from "../Shared/Interfaces/SorterEvent.Interface";
-import nodemailer from 'nodemailer';
-import pug from 'pug';
+import * as nodemailer from 'nodemailer'
+import * as pug from 'pug';
 
 export default class Emailer {
 

@@ -10,30 +10,35 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express = require('express');
+var express_1 = __importDefault(require("express"));
 // import sgMail = require('@sendgrid/mail');
-const Sorter_1 = __importDefault(require("./business/Sorter"));
-const Email_1 = __importDefault(require("./business/Email"));
-const dotenv = require("dotenv");
-const bodyParser = __importStar(require("body-parser"));
-const sort = new Sorter_1.default();
-const email = new Email_1.default();
+var Sorter_1 = __importDefault(require("./business/Sorter"));
+var Email_1 = __importDefault(require("./business/Email"));
+var dotenv = require("dotenv");
+var bodyParser = __importStar(require("body-parser"));
+var path_1 = __importDefault(require("path"));
+var sort = new Sorter_1.default();
+var email = new Email_1.default();
 dotenv.load();
-const app = express();
-const port = process.env.PORT;
-const GMAIL_PWD = process.env.GMAIL_PWD;
+var app = express_1.default();
+var port = process.env.PORT || '3000';
+var GMAIL_PWD = process.env.GMAIL_PWD;
 // create application/json parser
-const jsonParser = bodyParser.json();
+var jsonParser = bodyParser.json();
 // create application/x-www-form-urlencoded parser
 // var urlencodedParser = bodyParser.urlencoded({ extended: false })
-app.get('/', (req, res) => res.send('Hello World!'));
+app.use(express_1.default.static(path_1.default.resolve(__dirname, '../../React-UI/build')));
 app.post('/sendEmail', jsonParser, function (req, res) {
-    const event = req.body;
-    const emailList = sort.sortEventMembers(event.members);
-    for (const e of emailList) {
+    var event = req.body;
+    var emailList = sort.sortEventMembers(event.members);
+    for (var _i = 0, emailList_1 = emailList; _i < emailList_1.length; _i++) {
+        var e = emailList_1[_i];
         email.sendEmailer(GMAIL_PWD, event, e);
     }
     res.send('All participants were notified of their secret! ');
 });
-app.listen(port, () => console.log(`App listening on  localhost:${port}!`));
+app.get('*', function (request, response) {
+    response.sendFile(path_1.default.resolve(__dirname, '../../React-UI/build', 'index.html'));
+});
+app.listen(port, function () { return console.log("App listening on  localhost:" + port + "!"); });
 //# sourceMappingURL=Index.js.map

@@ -11,7 +11,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "npm run build-front && npm run build-api && node ./API/Index.js",
+    "dev": "npm run build-front && npm run build-api && node ./API/bin/Index.js",
     "build-api": "cd API && npm i && npm run build && cd ..",
     "build-front": "npm run heroku-postbuild",
     "start": "cd API && npm i && npm run build && node Index.js",

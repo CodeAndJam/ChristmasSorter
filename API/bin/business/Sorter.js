@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @param array Array to be shuffled
  */
 function shuffle(array) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length, temporaryValue, randomIndex;
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
         // Pick a remaining element...
@@ -18,18 +18,21 @@ function shuffle(array) {
     }
     return array;
 }
-class Sorter {
-    sortEventMembers(members) {
-        const arr = shuffle(members);
-        const sendingList = [];
-        for (let i = 0; i < arr.length; i++) {
-            const from = arr[i];
-            const to = i === arr.length - 1 ? arr[0] : arr[i + 1];
-            const email = { from, to };
+var Sorter = /** @class */ (function () {
+    function Sorter() {
+    }
+    Sorter.prototype.sortEventMembers = function (members) {
+        var arr = shuffle(members);
+        var sendingList = [];
+        for (var i = 0; i < arr.length; i++) {
+            var from = arr[i];
+            var to = i === arr.length - 1 ? arr[0] : arr[i + 1];
+            var email = { from: from, to: to };
             sendingList.push(email);
         }
         return sendingList;
-    }
-}
+    };
+    return Sorter;
+}());
 exports.default = Sorter;
 //# sourceMappingURL=Sorter.js.map
