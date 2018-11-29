@@ -12,11 +12,11 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(
         {
-          "name": fields.eventName,
-          "members": fields.participants,
-          "date": fields.eventDate,
-          "giftPrice": fields.price,
-          "currency": fields.currency
+          "name": fields.eventName.value,
+          "members": fields.participants.value,
+          "date": fields.eventDate.value,
+          "giftPrice": fields.price.value,
+          "currency": fields.currency.value
         })
     });
   }
