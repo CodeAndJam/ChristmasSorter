@@ -33,7 +33,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <h1>Christmas Sorter</h1>
         </header>
         <RegistrationForm action={this.registerUser} />
       </div>

@@ -15,7 +15,8 @@
     "build-api": "cd API && npm i && npm run build && cd ..",
     "build-front": "npm run heroku-postbuild",
     "start": "cd API && npm i && npm run build && node ./bin/Index.js",
-    "heroku-postbuild": "cd React-UI && npm install && npm install --only=dev --no-shrinkwrap && npm run build cd .."
+    "heroku-postbuild": "cd React-UI && npm install && npm install --only=dev --no-shrinkwrap && npm run build cd ..",
+    "build": "npm run heroku-postbuild"
   },
   "repository": {
     "type": "git",
