@@ -1,5 +1,23 @@
 {
   "configurations": [
+  {
+    "type": "pwa-node",
+    "request": "launch",
+    "name": "Launch Deno API",
+    "program": "${workspaceFolder}/api/sendemails.ts",
+    "cwd": "${workspaceFolder}",
+    "runtimeExecutable": "deno",
+    "runtimeArgs": [
+      "run",
+      "--inspect-brk=127.0.0.1:9229",
+      "--allow-all",
+      "--allow-env",
+      "--allow-read",
+      "--allow-net",
+      "--inspect",
+    ],
+    "attachSimplePort": 9229
+  },
     {
       "type": "node",
       "request": "launch",
