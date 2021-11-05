@@ -1,6 +1,6 @@
 import Member from "./Member.interface";
 
-export default class SorterEvent {
+export default interface SorterEvent {
     name: string;
     templateBody: string;
     members: Array<Member>;

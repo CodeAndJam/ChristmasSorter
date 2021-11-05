@@ -21,7 +21,6 @@
     "noStrictGenericChecks": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "preserveConstEnums": false,
     "removeComments": false,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
@@ -44,6 +43,7 @@
     "sourceMap": true
   },
   "include": [
-    "src"
+    "src",
+    "Shared"
   ]
 }

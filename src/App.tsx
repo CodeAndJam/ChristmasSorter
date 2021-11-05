@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/App.css";
 import RegistrationForm from "./Components/RegistrationForm";
-import { SorterEvent } from "../Shared/Interfaces/SorterEventAPI.interface";
+import { SorterEvent } from "../Shared/Interfaces/SorterEventAPI.Interface";
 
 export default class App extends React.Component {
   registerUser = ({
