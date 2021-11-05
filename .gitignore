@@ -38,5 +38,5 @@ API/.sample-env
 .vercel
 
 .env
-node_modules
+/node_modules/
 .vscode
