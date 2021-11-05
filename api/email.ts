@@ -31,13 +31,16 @@ export default (_req: VercelRequest, res: VercelResponse) => {
 
   const members = sortEventMembers(body.members);
 
-  try {
-    members.forEach((member) => {
-      sgMail.send(sendEmail(body, member));
-    });
-  } catch (error) {
-    res.status(500).send(error);
-  }
+  members.forEach((member) => {
+    sgMail
+      .send(sendEmail(body, member))
+      .then(() => {
+        console.log("Email sent");
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
+  });
 
-  res.status(200).send("Email sent");
+  res.status(200).send("All emails sent with success");
 };

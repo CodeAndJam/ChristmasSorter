@@ -28,7 +28,7 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(body),
     })
-      .then(() => alert(" Sent with success"))
+      .then(() => alert("Sent with success"))
       .catch((e) => alert("Error"));
   };
 
