@@ -29,18 +29,16 @@ export default (_req: VercelRequest, res: VercelResponse) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const body = _req.body as SorterEvent;
 
-  const members = sortEventMembers(body.members);
+  const emails: MailDataRequired[] = sortEventMembers(body.members).map(
+    (member) => sendEmail(body, member)
+  );
 
-  members.forEach((member) => {
-    sgMail
-      .send(sendEmail(body, member))
-      .then(() => {
-        console.log("Email sent");
-      })
-      .catch((error) => {
-        res.status(500).send(error);
-      });
-  });
-
-  res.status(200).send("All emails sent with success");
+  sgMail
+    .send(emails, true)
+    .then(() => {
+      res.status(200).send("All emails sent with success");
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
 };
