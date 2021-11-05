@@ -1,8 +1,8 @@
 import Member from "./Member.interface";
 
 export default class SorterEvent {
-    name: String;
-    templateBody: String;
+    name: string;
+    templateBody: string;
     members: Array<Member>;
     date: Date;
 }

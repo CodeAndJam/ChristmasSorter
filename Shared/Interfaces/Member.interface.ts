@@ -1,4 +1,4 @@
 export default interface Member {
-    name: String;
-    email: String;
+    name: string;
+    email: string;
 }

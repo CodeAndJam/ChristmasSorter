@@ -1,4 +1,4 @@
-import { Member } from "./Member.interface.ts";
+import Member from "./Member.interface";
 
 export interface EmailList {
   from: Member;

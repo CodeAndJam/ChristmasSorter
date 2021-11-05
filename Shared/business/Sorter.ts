@@ -1,5 +1,5 @@
-import { Member } from "../Interfaces/Member.interface.ts";
-import { EmailList } from "../Interfaces/EmailList.interface.ts";
+import Member from "../Interfaces/Member.interface";
+import { EmailList } from "../Interfaces/EmailList.interface";
 
 /**
  * Fisher–Yates shuffle
@@ -7,8 +7,8 @@ import { EmailList } from "../Interfaces/EmailList.interface.ts";
  */
 function shuffle(array: any) {
   let currentIndex = array.length,
-    temporaryValue,
-    randomIndex;
+    temporaryValue: any,
+    randomIndex: number;
 
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {

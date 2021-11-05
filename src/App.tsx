@@ -1,29 +1,36 @@
-import React from 'react';
-import './css/App.css';
-import RegistrationForm from './Components/RegistrationForm';
-
+import React from "react";
+import "./css/App.css";
+import RegistrationForm from "./Components/RegistrationForm";
+import { SorterEvent } from "../Shared/Interfaces/SorterEventAPI.interface";
 
 export default class App extends React.Component {
-  registerUser = ({ serialized, fields, form }: { serialized: any, fields: any, form: any }) => {
-    return fetch(`/api/sendEmails`, {
-      method: 'POST',
+  registerUser = ({
+    serialized,
+    fields,
+    form,
+  }: {
+    serialized: any;
+    fields: any;
+    form: any;
+  }) => {
+    const body: SorterEvent = {
+      name: fields.eventName.value,
+      members: JSON.parse(fields.participants.value),
+      date: fields.eventDate.value,
+      giftPrice: fields.price.value,
+      currency: fields.currency.value,
+    };
+
+    return fetch(`/api/email`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
       },
-      body: JSON.stringify(
-        {
-          "name": fields.eventName.value,
-          "members": JSON.parse(fields.participants.value),
-          "date": fields.eventDate.value,
-          "giftPrice": fields.price.value,
-          "currency": fields.currency.value
-        })
-    }).then(() => alert(" Sent with success"))
+      body: JSON.stringify(body),
+    })
+      .then(() => alert(" Sent with success"))
       .catch((e) => alert("Error"));
-
-
-
-  }
+  };
 
   render() {
     return (
@@ -36,5 +43,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-
