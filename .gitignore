@@ -40,3 +40,4 @@ API/.sample-env
 .env
 /node_modules/
 .vscode
+sendgrid.env
