@@ -1,32 +1,33 @@
 {
   "name": "christmassorter",
-  "version": "1.0.0",
-  "description": "Christmas Sorter",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "express": "^4.16.4",
-    "nodemailer": "^6.4.16",
-    "react": "^16.6.3",
-    "react-advanced-form": "^1.5.9"
+    "@sendgrid/mail": "^7.6.0",
+    "@types/jest": "^26.0.14",
+    "@types/react": "^16.9.51",
+    "@types/react-dom": "^16.9.8",
+    "@vercel/node": "^1.12.1",
+    "react": "^16.13.1",
+    "react-advanced-form": "^1.7.2",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.3",
+    "typescript": "^4.0.3",
+    "validator": "^13.1.17"
   },
-  "devDependencies": {},
   "scripts": {
-    "dev": "npm run build-front && npm run build-api && node ./API/bin/Index.js",
-    "build-api": "cd API && npm i && npm run build && cd ..",
-    "build-front": "npm run heroku-postbuild",
-    "start": "cd API && npm i && npm run build && node ./bin/Index.js",
-    "heroku-postbuild": "cd React-UI && npm install && npm install --only=dev --no-shrinkwrap && npm run build cd ..",
-    "build": "npm run heroku-postbuild"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/break7533/ChristmasSorter.git"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/break7533/ChristmasSorter/issues"
-  },
-  "homepage": "https://github.com/break7533/ChristmasSorter#readme"
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

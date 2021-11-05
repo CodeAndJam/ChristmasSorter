@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Christmas Sorter
+
+Application to send emails to a group with the secret santa gift.
 
 ## Available Scripts
 
