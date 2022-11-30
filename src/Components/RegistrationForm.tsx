@@ -56,16 +56,14 @@ export default function RegistrationForm(action: any) {
     };
 
     try {
-      console.log(data);
-      return;
-      // await fetch(`/api/email`, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json; charset=utf-8",
-      //   },
-      //   body: JSON.stringify(body),
-      // });
-      // return alert("Sent with success");
+      await fetch(`/api/email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(body),
+      });
+      return alert("Sent with success");
     } catch (e) {
       return alert("Error");
     }
@@ -121,18 +119,18 @@ export default function RegistrationForm(action: any) {
               key={`${field.id}-name`}
               placeholder="name"
               {...register(`participants.${index}.name` as const, {
-                required: true
+                required: true,
               })}
               className={errors?.participants?.[index]?.name ? "error" : ""}
-              />
+            />
             {errors.participants?.[index] && (
               <p>{errors.participants?.[index]?.name?.message}</p>
-              )}
+            )}
             <input
               key={`${field.id}-email`}
               placeholder="email"
               {...register(`participants.${index}.email` as const, {
-                required: true
+                required: true,
               })}
               className={errors?.participants?.[index]?.email ? "error" : ""}
             />
